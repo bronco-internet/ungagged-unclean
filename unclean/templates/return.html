@@ -1,0 +1,39 @@
+{% macro show_img(var) %}
+    {% if var %}
+         <img src="/static/true.png" alt="True"/>
+    {% else %}
+         <img src="/static/false.png" alt="False"/>
+    {% endif %}
+{% endmacro %}
+
+
+	<h1>Results for {{ link_to_check }}</h1>
+	<p>In this section we've checked the site for common blocking techniques</p>
+    <ul>
+        <li><strong>Canonical Links Match or not Present?</strong>{{ show_img(canonical_tag) }}<small> {% if canonical %}<strong>Tag: </strong> {{ canonical }} {% else %}{% endif %}</small></li>
+        <li><strong>X-Robots Header is not Blocking the Page?</strong>{{ show_img(xrobot) }}</li>
+        <li><strong>Page-wide nofollow is not Blocking the Page?</strong>{{ show_img(head_nofollow) }}</li>
+        <li><strong>Page-wide noindex is not Blocking the page??</strong>{{ show_img(head_noindex) }}</li>
+        <li><strong>URL Found in Google's Index?</strong>{{ show_img(google_index) }}</li>
+        <li><strong>Is the page allowed by Robots.txt?</strong>{{ show_img(robots_txt_block) }}</li>
+        <li><strong>Was the link found?</strong>{{ show_img(linking_status) }}<small><strong>Anchor:</strong> {{ anchor_text }}</small><small><strong>Link:</strong> {{ linking_url }}</small></li>
+        <li><strong>Is the nofollow NOT Found on the Link?</strong>{{ show_img(nofollow_on_link) }}</li>
+        <li><strong>Is the noindex NOT Found on the Link?</strong>{{ show_img(noindex_on_link) }}</li>
+    </ul>
+	
+	<p>In this section we've checked Google cache for the same to try detect cloaking</p>
+    {% if is_in_google_cache %}
+	<ul>
+        <li><strong>Page-wide noindex is not Blocking the Page within Google Cache?</strong>{{ show_img(google_head_noindex) }}</li>
+        <li><strong>Page-wide nofollow is not Blocking the Page within Google Cache?</strong>{{ show_img(google_head_nofollow) }}</li>
+        <li><strong>Canonical Links Match or not Present within Google Cache?</strong>{{ show_img(google_canonical_tag) }}<small><strong>Tag:</strong>{{ google_canonical }}</small></li>
+        <li><strong>Is the nofollow Attribute NOT Found on the Link within Google Cache?</strong>{{ show_img(google_nofollow_on_link) }}</li>
+        <li><strong>Is the noindex Attribute NOT Found on the Link within Google Cache?</strong>{{ show_img(google_noindex_on_link) }}</li>
+        <li><strong>Was the link found within Google Cache?</strong>{{ show_img(google_linking_status) }}<small><strong>Anchor:</strong> {{ google_anchor_text }}</small><small><strong>Link:</strong> {{ google_linking_url }}</small></li>
+  	</ul>
+    {% else %}
+    <ul>
+        <li><strong>Opps, looks like there's no cached copy!</strong> {{ show_img(is_in_google_cache) }}</li>
+    </ul>
+    {% endif %}
+    <br>

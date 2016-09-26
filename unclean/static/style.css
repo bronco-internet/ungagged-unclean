@@ -1,0 +1,42 @@
+/* Reset */
+body,div,img,a,area			{margin:0;padding:0;border:0;outline:0}
+html						{font-size:62.5%}
+
+/* Layout */
+body						{background:url(/static/bg.jpg) no-repeat;background-size:100% 100%;text-align:left;font-size:1.6px;font:400 1.6rem "Roboto",arial,sans-serif,verdana;position:relative;height:100%;color:#630;min-width:640px}
+form						{position:absolute;top:17%;left:15%;width:69%;height:29%}
+form p						{line-height:30px}
+legend						{display:inline;font-weight:700;font-size:20px;font-size:2rem}
+label						{margin:0 10px}
+input[type="text"],input[type="url"]{width:160px}
+input[type="submit"]		{background:#300;color:#fff;border:0;padding:2px 10px;margin-left:2px}
+input[type="submit"]:hover  {cursor:pointer;background:#660}
+
+#results					{text-align:left;position:absolute;top:27%;left:15%;width:69%;height:53%;overflow-y:scroll}
+#results h1					{font-size:26px;font-size:2.6rem}
+#results ul					{margin:20px 0;padding:0}
+#results ul li				{list-style-type:none;margin-bottom:5px;margin-left:20px}
+#results ul li strong		{float:left;width:80%}
+#results ul li small		{margin:10px 0 0 20px;font-style:italic;display:block}
+#results ul li small strong {float:none}
+
+#logo						{position:absolute;right:10px;width:200px}
+
+@media only screen and (max-width:1060px)
+{
+label						{margin:0 5px}
+input[type="text"],input[type="url"]{width:100px}
+}
+
+@media only screen and (max-width:840px)
+{
+body{background-size:120% 100%;background-position:50% 0}
+form,#results{left:10%;width:79%}
+}
+
+@media only screen and (max-width:720px)
+{
+legend{display:block}
+body{background-size:150% 100%}
+form,#results{left:5%;width:95%}
+}
